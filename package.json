@@ -1,0 +1,28 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "Proyecto de práctica para conexa.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/carlosdomenje/backend-test-conexa.git"
+  },
+  "keywords": [
+    "backend",
+    "conexa",
+    "api",
+    "test",
+    "express",
+    "node",
+    "test"
+  ],
+  "author": "Carlos Domenje",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlosdomenje/backend-test-conexa/issues"
+  },
+  "homepage": "https://github.com/carlosdomenje/backend-test-conexa#readme"
+}
