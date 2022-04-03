@@ -1,7 +1,7 @@
 const https = require('https');
 
 /* 
-    Obtener Post desde url.
+    Obtener Photos desde url
     @param: none
     @return: response with status
 */
@@ -9,7 +9,17 @@ const https = require('https');
 const obtenerPhotos = async (req, response) => {
     try {
         var body = "";
-        https.get(process.env.URL_PHOTOS, (res) => {
+        var limit = req.query._limit;
+        var start = req.query._start * 10;
+
+        var options = {
+            hostname: process.env.URL_PHOTOS,
+            port:443,
+            path:`/photos?_start=${start}&_limit=${limit}`,
+            method: 'GET',
+        };
+
+        const request = https.get(options, (res) => {
             
             res.on('data', (data) => {
                 body+=data;
@@ -33,12 +43,21 @@ const obtenerPhotos = async (req, response) => {
                 }
                 response.status(200).json({
                     ok: true,
-                    body: body
+                    photos: body,
+                    from: start,
+                    count: limit
                 })
                
             });
-          });
-
+        
+        });
+        request.on('error', (error)=>{
+            response.status(404).json({
+                ok: false,
+                msg: 'No se encuentra el destino'
+            })
+        });
+        
     } catch (error) {
         response.status(500).json({
             ok: false,

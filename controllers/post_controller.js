@@ -1,9 +1,7 @@
 const https = require('https');
 
 /* 
-    Obtener Post desde url.
-    @param: none
-    @return: response with status
+    Obtener Post desde url
 */
 
 const obtenerPosts = async (req, response) => {
