@@ -1,14 +1,22 @@
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @file validar-jwt.js
+ * @description Funcion middleware para validacion de JWT.
+ */
+
 const jwt = require('jsonwebtoken');
 const { generarJWT } = require('../helpers/jwt');
 
 
 
-/* 
-    Verificar Token.
-    Verifica que en cada peticion, luego de loguearse, tengamos un token valido.
-    El token debe llegar en el header Authorization.
-*/
-
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @function validarJWT
+ * @description Chequeo de token en cada petición que lo requiera. Validación de JWT. 
+ *              El token debe llegar en el header Authorization.
+ */
 const validarJWT = (req, res, next) => {
 
     const token = req.header('Authorization');

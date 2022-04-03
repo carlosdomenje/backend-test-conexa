@@ -1,16 +1,25 @@
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @file photos_controller
+ * @description Controlador de funciones fotos.
+ */
+
 const https = require('https');
 
-/* 
-    Obtener Photos desde url
-    @param: none
-    @return: response with status
-*/
 
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @function obtenerPhotos
+ * @description Se obtiene las fotos con un determinado offset y limite.
+ * @link https://github.com/typicode/jsonplaceholder/issues/65
+ */
 const obtenerPhotos = async (req, response) => {
     try {
         var body = "";
-        var limit = req.query._limit;
-        var start = req.query._start * 10;
+        var limit = req.query._limit || 10;
+        var start = req.query._start * 10 || 0;
 
         var options = {
             hostname: process.env.URL_PHOTOS,
@@ -52,6 +61,7 @@ const obtenerPhotos = async (req, response) => {
         
         });
         request.on('error', (error)=>{
+            logger.logMessage('error','No se encuentra el destino de fotos');
             response.status(404).json({
                 ok: false,
                 msg: 'No se encuentra el destino'
@@ -59,6 +69,7 @@ const obtenerPhotos = async (req, response) => {
         });
         
     } catch (error) {
+        logger.logMessage('error','Respuesta del servidor en fotos');
         response.status(500).json({
             ok: false,
             msg: 'Hable con el administrador'

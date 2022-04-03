@@ -1,9 +1,19 @@
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @file post_controller
+ * @description Controlador de funciones de posts.
+ */
+
 const https = require('https');
 
-/* 
-    Obtener Post desde url
-*/
-
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @function obtenerPosts
+ * @description Se obtiene todos los posts de la URL dada.
+ * @link https://jsonplaceholder.typicode.com/posts
+ */
 const obtenerPosts = async (req, response) => {
     try {
         var body = "";
@@ -38,6 +48,7 @@ const obtenerPosts = async (req, response) => {
           });
 
     } catch (error) {
+        logger.logMessage('error','Respuesta del servidor en posts');
         response.status(500).json({
             ok: false,
             msg: 'Hable con el administrador'

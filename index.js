@@ -1,19 +1,33 @@
-
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @file aindex.js
+ * @description Función de entrada.
+ */
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
+const logger = require('./helpers/logger');
+
 
 const PORT = process.env.PORT || 3000;
 
+
 const app = express();
 
-/* 
-Middlewares
-OWASP rules
-https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html
-*/
-app.use(express.json({limit: '20mb'}));
-app.use(express.urlencoded({extended: false, limit: '20mb'}));
+
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @function Funciones-Middlewares
+ * @description Configuracion de CORS, validaciones, headers... segun recomendaciones de OWASP.
+ * @link https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html
+ */
+app.use(express.json({limit: '1kb'}));
+app.use(express.urlencoded({extended: false, limit: '1kb'}));
+app.use(helmet());
+
 
 app.use(
     cors(
@@ -27,6 +41,8 @@ app.use(
 
 app.options("*", cors());
 
+
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", true);
@@ -36,13 +52,21 @@ app.use(function (req, res, next) {
   });
 
 
-/* Routes */
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @description Definicion de rutas utilizadas.
+ */
 app.use(`/${process.env.API_VERSION}/auth`, require('./routes/auth_route'));
 app.use(`/${process.env.API_VERSION}/posts`, require('./routes/posts_route'));
 app.use(`/${process.env.API_VERSION}/photos`, require('./routes/photos_route'));
 
 
-/* Server. */
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @description Creación de un Listener en el puerto especificado.
+ */
 app.listen(PORT, ()=>{
-    console.log('server: \x1b[32m%s\x1b[0m', 'running');
+  logger.logMessage('info','server running');
 });

@@ -1,13 +1,24 @@
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @file jwt.js
+ * @description Funciones de ayuda relacionadas con JWT
+ */
+
 const jwt = require('jsonwebtoken');
 
 
-/* 
-    Generar un JWT a partir del parametro _id del usuario.
-*/
+
+/**
+ * @author Carlos Domenje
+ * @version 1.0.0
+ * @function generarJWT
+ * @description Función que genera un JWT a partir de un parametro dado, Tiempo de expiración en 6hs.
+ * @param {string} Se necesita un parámetro para generar el JWT
+ * @returns {string} token generado.
+ */
 
 const generarJWT = ( uid ) => {
-
-
     return new Promise ( ( resolve, reject ) => {
 
         const payload = {
@@ -19,6 +30,7 @@ const generarJWT = ( uid ) => {
                 (err, token) => {
                     if(err){
                         reject('No es posible generar el JWT')
+
                     }else{
                         resolve(token);
                     }
