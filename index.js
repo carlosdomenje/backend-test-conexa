@@ -51,7 +51,9 @@ app.use(function (req, res, next) {
     next();
   });
 
-
+ // Directorio Público
+ app.use( express.static('public') );
+ 
 /**
  * @author Carlos Domenje
  * @version 1.0.0
