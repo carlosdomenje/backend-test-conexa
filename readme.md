@@ -41,6 +41,12 @@ Puede utilizar las apis desde Heroku ingresando la url:
 ```
 https://api-backend-cdomenje.herokuapp.com/
 ```
+Luego en el proyecto, dirigirse a:
+
+```
+cd testing
+```
+Ejecutar el archivo con el software **Postman**
 
 
 De forma local, debera realizar los siguientes pasos:
@@ -74,20 +80,12 @@ npm install
 
 npm test
 ```
-Dentro de postman, debera configurar la url como:
+Dentro de **postman**, debera configurar la url como:
 ```
 localhost:3001
 ```
 
-Para realizar las pruebas de las diferentes apis y su funcionalidad puede dirigirse a la carpeta test del proyecto donde encontrará las diferentes funciones en un archivo para postman.
-
-Si desea realizar el testing directamente a la api desplegada en heroku, debera utilizar la direccion: 
-
-```
-https://api-backend-cdomenje.herokuapp.com/
-```
-
-De otra manera, si quiere utilizar el proyecto de forma local, debera generar un archivo .env
+Para realizar las pruebas de las diferentes apis y su funcionalidad puede dirigirse a la carpeta **testing** del proyecto donde encontrará las diferentes funciones en un archivo para postman.
 
 
 ## Herramientas utilizadas 🛠️
