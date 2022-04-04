@@ -53,15 +53,15 @@ app.use(function (req, res, next) {
 
  // Directorio Público
  app.use( express.static('public') );
- 
+
 /**
  * @author Carlos Domenje
  * @version 1.0.0
  * @description Definicion de rutas utilizadas.
  */
-app.use(`/${process.env.API_VERSION}/auth`, require('./routes/auth_route'));
-app.use(`/${process.env.API_VERSION}/posts`, require('./routes/posts_route'));
-app.use(`/${process.env.API_VERSION}/photos`, require('./routes/photos_route'));
+app.use(`api/${process.env.API_VERSION}/auth`, require('./routes/auth_route'));
+app.use(`api/${process.env.API_VERSION}/posts`, require('./routes/posts_route'));
+app.use(`api/${process.env.API_VERSION}/photos`, require('./routes/photos_route'));
 
 
 /**
