@@ -38,7 +38,13 @@ git clone https://github.com/carlosdomenje/backend-test-conexa.git
 ```
 
 ## Despliegue 📦
+Puede utilizar las apis desde Heroku ingresando la url:
+```
+https://api-backend-cdomenje.herokuapp.com/
+```
 
+
+De forma local, debera realizar los siguientes pasos:
 Para realizar el despliegue de la aplicacion primero debera ingresar a la carpeta del proyecto:
 
 ```
