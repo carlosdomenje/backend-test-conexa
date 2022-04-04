@@ -26,8 +26,7 @@ Mira **Despliegue** para conocer como desplegar el proyecto.
 
 [Npm](https://docs.npmjs.com/cli/install) Para realizar la instalacion de paquetes utilizacion por la aplicacion.
 
-Guia de instalacion en Ubuntu 18,17,16 y 14
-
+[Postman](https://www.postman.com/) Para realizar el testing de las apis desarrolladas.
 
 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) es necesario si quiere realizar por linea de comandos el clone del repositorio.
 
@@ -54,15 +53,47 @@ cd backend-test-conexa
 Abrir una terminal y ejecutar:
 
 ```
+touch .env
+```
+
+Dentro del archivo .env debera colocar las siguiente variables de entorno, que son variables utilizadas para testing y no para produccion. 
+
+```
+PORT=3001
+API_VERSION=v1
+JWT_SECRET=jwt-secret-12345
+URL_POST=https://jsonplaceholder.typicode.com/posts
+URL_PHOTOS=jsonplaceholder.typicode.com
+NODE_ENV=testing
+```
+
+Luego debera ejecutar los siguientes comandos:
+
+```
 npm install
 
 npm test
 ```
+Dentro de postman, debera configurar la url como:
+```
+localhost:3001
+```
+
+Para realizar las pruebas de las diferentes apis y su funcionalidad puede dirigirse a la carpeta test del proyecto donde encontrará las diferentes funciones en un archivo para postman.
+
+Si desea realizar el testing directamente a la api desplegada en heroku, debera utilizar la direccion: 
+
+```
+https://api-backend-cdomenje.herokuapp.com/
+```
+
+De otra manera, si quiere utilizar el proyecto de forma local, debera generar un archivo .env
+
 
 ## Herramientas utilizadas 🛠️
 
 * [NodeJS](https://nodejs.org/en/)
-
+* [Postman](https://www.postman.com/)
 
 ## Contribuir 🖇️
 
